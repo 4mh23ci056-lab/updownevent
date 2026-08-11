@@ -12,19 +12,19 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Gold palette */
-  --gold: #D4AF37;
-  --gold-light: #E6C766;
-  --gold-deep: #C9A24A;
-  --gold-muted: rgba(212, 175, 55, 0.15);
-  --gold-border: rgba(212, 175, 55, 0.25);
-  --gold-border-hover: rgba(212, 175, 55, 0.6);
+  --gold: #C9AA4A;
+  --gold-light: #E0C36A;
+  --gold-deep: #D6B85A;
+  --gold-muted: rgba(201, 170, 74, 0.15);
+  --gold-border: rgba(201, 170, 74, 0.25);
+  --gold-border-hover: rgba(201, 170, 74, 0.6);
 
   /* Dark palette */
-  --bg-primary: #050505;
-  --bg-secondary: #0B0B0B;
-  --bg-card: #111111;
-  --bg-card-hover: #161616;
-  --bg-elevated: #141414;
+  --bg-primary: #000000;
+  --bg-secondary: #030303;
+  --bg-card: #080808;
+  --bg-card-hover: #0c0c0c;
+  --bg-elevated: #0a0a0a;
 
   /* Text */
   --text-primary: #F5F2EA;

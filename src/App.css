@@ -44,14 +44,12 @@ textarea {
 }
 
 .gold-shimmer {
-  background: linear-gradient(
-    120deg,
-    #D4AF37 0%,
-    #FFE89E 25%,
-    #D4AF37 50%,
-    #C9A227 75%,
-    #D4AF37 100%
-  );
+  background: linear-gradient(120deg,
+      #D4AF37 0%,
+      #FFE89E 25%,
+      #D4AF37 50%,
+      #C9A227 75%,
+      #D4AF37 100%);
   background-size: 200% auto;
   color: transparent;
   -webkit-background-clip: text;
@@ -64,6 +62,7 @@ textarea {
   0% {
     background-position: 0% center;
   }
+
   100% {
     background-position: 200% center;
   }
@@ -136,18 +135,53 @@ textarea {
 }
 
 /* Stagger delays */
-.delay-50 { transition-delay: 50ms; }
-.delay-100 { transition-delay: 100ms; }
-.delay-150 { transition-delay: 150ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-250 { transition-delay: 250ms; }
-.delay-300 { transition-delay: 300ms; }
-.delay-350 { transition-delay: 350ms; }
-.delay-400 { transition-delay: 400ms; }
-.delay-450 { transition-delay: 450ms; }
-.delay-500 { transition-delay: 500ms; }
-.delay-550 { transition-delay: 550ms; }
-.delay-600 { transition-delay: 600ms; }
+.delay-50 {
+  transition-delay: 50ms;
+}
+
+.delay-100 {
+  transition-delay: 100ms;
+}
+
+.delay-150 {
+  transition-delay: 150ms;
+}
+
+.delay-200 {
+  transition-delay: 200ms;
+}
+
+.delay-250 {
+  transition-delay: 250ms;
+}
+
+.delay-300 {
+  transition-delay: 300ms;
+}
+
+.delay-350 {
+  transition-delay: 350ms;
+}
+
+.delay-400 {
+  transition-delay: 400ms;
+}
+
+.delay-450 {
+  transition-delay: 450ms;
+}
+
+.delay-500 {
+  transition-delay: 500ms;
+}
+
+.delay-550 {
+  transition-delay: 550ms;
+}
+
+.delay-600 {
+  transition-delay: 600ms;
+}
 
 /* Custom button hover arrow translate animation */
 .primary-button:hover svg,
@@ -164,6 +198,7 @@ textarea {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   .text-mask-content,
   .reveal-up,
   .reveal-fade,
@@ -174,6 +209,7 @@ textarea {
     width: auto !important;
     animation: none !important;
   }
+
   .gold-shimmer {
     background: none !important;
     color: var(--gold) !important;
@@ -316,7 +352,8 @@ textarea {
 
 /* ── Mobile-only Instagram icon in top bar ── */
 .mobile-insta-topbar {
-  display: none; /* hidden on desktop */
+  display: none;
+  /* hidden on desktop */
 }
 
 /* ── Hamburger ── */
@@ -454,9 +491,9 @@ main {
 }
 
 .secondary-button:hover {
-  background: rgba(212, 175, 55, 0.1);
+  background: rgb(7, 7, 7);
   border-color: var(--gold);
-  color: var(--gold);
+  color: var(--black);
   transform: translateY(-2px);
 }
 
@@ -496,7 +533,7 @@ main {
   box-sizing: border-box;
   position: relative;
   z-index: 6;
-  box-shadow: 20px 0 45px rgba(0, 0, 0, 0.95);
+  box-shadow: none;
 }
 
 .hero-col-right {
@@ -586,7 +623,7 @@ main {
 
 @keyframes heroImageFadeInScale {
   to {
-    opacity: 1;
+    opacity: 10;
     transform: scale(1);
   }
 }
@@ -596,19 +633,18 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 60%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(5, 5, 5, 1) 0%,
-    rgba(5, 5, 5, 0.95) 15%,
-    rgba(5, 5, 5, 0.7) 45%,
-    rgba(5, 5, 5, 0.25) 75%,
-    rgba(5, 5, 5, 0) 100%
-  );
+  background: linear-gradient(to right,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.96) 18%,
+      rgba(0, 0, 0, 0.65) 48%,
+      rgba(0, 0, 0, 0.2) 78%,
+      rgba(0, 0, 0, 0) 100%);
   pointer-events: none;
   z-index: 1;
 }
+
 
 /* Background opacity adjustments for premium feel */
 .hero-bg-glow {
@@ -630,6 +666,7 @@ main {
     width: 48%;
     padding: 0 3vw 0 4vw;
   }
+
   .hero-col-right {
     width: 52%;
   }
@@ -642,19 +679,23 @@ main {
     min-height: calc(100dvh - 70px);
     display: block;
   }
+
   .hero-two-col-container {
     flex-direction: column;
     height: auto;
   }
+
   .hero-col-left {
     width: 100%;
     height: auto;
     padding: 4rem 1.5rem 3rem;
   }
+
   .hero-col-right {
     width: 100%;
     height: 380px;
   }
+
   .hero-image-gradient-overlay {
     width: 100%;
     height: 35%;
@@ -666,15 +707,7 @@ main {
 
 /* 1. Center Glow — warm radial behind content */
 .hero-bg-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  height: 80%;
-  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.12) 0%, rgba(5, 5, 5, 0) 65%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 /* 2. Concentric Circles — large visible gold ring */
@@ -701,13 +734,23 @@ main {
 }
 
 @keyframes rotateOuter {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotateInner {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 /* 3. Gold Flowing Waves — prominent silk light trails */
@@ -733,13 +776,27 @@ main {
 }
 
 @keyframes waveMotionLeft {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(12px, -8px) scale(1.015); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(12px, -8px) scale(1.015);
+  }
 }
 
 @keyframes waveMotionRight {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-12px, 8px) scale(1.015); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-12px, 8px) scale(1.015);
+  }
 }
 
 /* 4. Canvas Particles */
@@ -755,21 +812,7 @@ main {
 
 /* 5. Bottom Ellipse Stage Light */
 .hero-bg-bottom-light {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 160px;
-  background: radial-gradient(ellipse at bottom, rgba(212, 175, 55, 0.28) 0%, rgba(212, 175, 55, 0.08) 35%, rgba(5, 5, 5, 0) 70%);
-  pointer-events: none;
-  z-index: 1;
-  animation: pulseStageLight 7s ease-in-out infinite;
-}
-
-@keyframes pulseStageLight {
-  0%, 100% { opacity: 0.8; transform: translateX(-50%) scaleX(1); }
-  50% { opacity: 1; transform: translateX(-50%) scaleX(1.05); }
+  display: none;
 }
 
 /* ══════════════════════════════════════

@@ -422,11 +422,11 @@ function ParticleCanvas() {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.5 + 0.1,
-        pulseSpeed: Math.random() * 0.01 + 0.003,
+        radius: Math.random() * 1.6 + 0.4,
+        speedX: (Math.random() - 0.5) * 0.15,
+        speedY: -Math.random() * 0.25 - 0.05,
+        opacity: Math.random() * 0.6 + 0.15,
+        pulseSpeed: Math.random() * 0.008 + 0.002,
         pulseDir: Math.random() > 0.5 ? 1 : -1
       })
     }
@@ -439,24 +439,28 @@ function ParticleCanvas() {
         p.x += p.speedX
         p.y += p.speedY
 
-        // Bounce on boundaries
-        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1
-        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1
+        // Reset if off canvas
+        if (p.y < 0) {
+          p.y = canvas.height
+          p.x = Math.random() * canvas.width
+        }
+        if (p.x < 0) p.x = canvas.width
+        if (p.x > canvas.width) p.x = 0
 
         // Pulsing opacity
         p.opacity += p.pulseSpeed * p.pulseDir
         if (p.opacity > 0.7) {
           p.opacity = 0.7
           p.pulseDir = -1
-        } else if (p.opacity < 0.1) {
-          p.opacity = 0.1
+        } else if (p.opacity < 0.15) {
+          p.opacity = 0.15
           p.pulseDir = 1
         }
 
         // Draw particle
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`
+        ctx.fillStyle = `rgba(201, 170, 74, ${p.opacity})`
         ctx.fill()
       })
 
@@ -472,7 +476,7 @@ function ParticleCanvas() {
       particles.forEach(p => {
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`
+        ctx.fillStyle = `rgba(201, 170, 74, ${p.opacity})`
         ctx.fill()
       })
     }
@@ -815,11 +819,11 @@ function App() {
                 
                 <div className="hero-actions-editorial reveal-up delay-550">
                   <a href="#services" className="primary-button">
-                    Our Services
+                    OUR SERVICES
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
                   </a>
                   <a href="#contact" className="secondary-button">
-                    Contact Us
+                    CONTACT US
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
                   </a>
                 </div>
