@@ -10,6 +10,7 @@ import foodSnacksImg from './assets/food_snacks.png'
 import funActivitiesImg from './assets/fun_activities.png'
 import entertainmentImg from './assets/entertainment.png'
 import gallery2Img from './assets/gallery_2.jpeg'
+import heroStageImg from './assets/hero_stage.jpg'
 
 const services = [
   {
@@ -786,36 +787,49 @@ function App() {
           <ParticleCanvas />
           <div className="hero-bg-bottom-light" aria-hidden="true" />
 
-          {/* Centered Hero Content Layer */}
-          <div className="hero-inner-centered">
-            <RevealSection className="hero-centered-content">
-              <div className="hero-logo-wrap reveal-up">
-                <img src={logoImg} alt="Uptown Events" className="hero-logo" />
+          {/* Two-Column Layout Container */}
+          <div className="hero-two-col-container">
+            {/* Left Column (Content) */}
+            <div className="hero-col-left">
+              <RevealSection className="hero-left-content">
+                <div className="hero-eyebrow reveal-up delay-100">
+                  <span className="eyebrow-line"></span>
+                  MAKING MOMENTS
+                </div>
+                
+                <h1 className="hero-heading-editorial text-mask-wrapper">
+                  <span className="text-mask-content reveal-up delay-200">
+                    WE PLAN.
+                  </span>
+                  <span className="gold-text gold-shimmer text-mask-content reveal-up delay-350">
+                    YOU CELEBRATE.
+                  </span>
+                </h1>
+                
+                <p className="hero-description-editorial reveal-up delay-450">
+                  Creating unforgettable celebrations with extraordinary decor, entertainment and experiences.
+                </p>
+                
+                <div className="hero-actions-editorial reveal-up delay-550">
+                  <a href="#services" className="primary-button">
+                    EXPLORE OUR SERVICES
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                  </a>
+                  <a href="#contact" className="secondary-button">
+                    PLAN YOUR EVENT
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                  </a>
+                </div>
+              </RevealSection>
+            </div>
+
+            {/* Right Column (Image) */}
+            <div className="hero-col-right">
+              <div className="hero-image-blend-wrapper">
+                <img src={heroStageImg} alt="Luxury event decoration stage" className="hero-image-blend" />
+                <div className="hero-image-gradient-overlay" />
               </div>
-              <div className="hero-divider-line reveal-fade delay-100" aria-hidden="true" />
-              <h1 className="text-mask-wrapper">
-                <span className="text-mask-content reveal-up delay-200">
-                  WE PLAN.
-                </span>
-                <span className="gold-text gold-shimmer reveal-up delay-350" style={{ display: 'block' }}>
-                  YOU CELEBRATE.
-                </span>
-              </h1>
-              <p className="hero-copy reveal-up delay-450">
-                Creating unforgettable celebrations with extraordinary decor, entertainment and experiences.
-              </p>
-              <div className="hero-divider-line reveal-fade delay-550" aria-hidden="true" />
-              <div className="hero-actions reveal-up delay-600">
-                <a href="#services" className="primary-button">
-                  EXPLORE OUR SERVICES
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
-                </a>
-                <a href="#contact" className="secondary-button">
-                  PLAN YOUR EVENT
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
-                </a>
-              </div>
-            </RevealSection>
+            </div>
           </div>
         </section>
 
