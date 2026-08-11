@@ -496,6 +496,7 @@ main {
   box-sizing: border-box;
   position: relative;
   z-index: 6;
+  box-shadow: 20px 0 45px rgba(0, 0, 0, 0.95);
 }
 
 .hero-col-right {
@@ -590,14 +591,21 @@ main {
   }
 }
 
-/* Left-edge dark gradient blend */
+/* Left-edge dark gradient blend - dissolve effect */
 .hero-image-gradient-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 35%;
+  width: 50%;
   height: 100%;
-  background: linear-gradient(to right, rgba(5, 5, 5, 1) 0%, rgba(5, 5, 5, 0.5) 45%, rgba(5, 5, 5, 0) 100%);
+  background: linear-gradient(
+    to right,
+    rgba(5, 5, 5, 1) 0%,
+    rgba(5, 5, 5, 0.95) 15%,
+    rgba(5, 5, 5, 0.7) 45%,
+    rgba(5, 5, 5, 0.25) 75%,
+    rgba(5, 5, 5, 0) 100%
+  );
   pointer-events: none;
   z-index: 1;
 }
