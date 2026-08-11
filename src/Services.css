@@ -275,6 +275,25 @@
   margin-bottom: 2.5rem;
 }
 
+.svc-category-grid.photo-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 900px) {
+  .svc-category-grid.photo-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .svc-category-grid.photo-grid .svc-category-card {
+    min-width: 160px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+}
+
 .svc-category-card {
   background: #101010;
   border: 1px solid rgba(212,175,55,0.25);

@@ -27,16 +27,6 @@ const servicesData = [
         <circle cx="18" cy="18" r="3" />
       </svg>
     ),
-    categories: [
-      { title: 'Weddings', image: flowerDecorImg, description: 'Grand wedding floral stages and mandap decorations.' },
-      { title: 'Reception', image: gallery2Img, description: 'Elegant reception hall floral installations.' },
-      { title: 'Haldi', image: aboutImg, description: 'Vibrant yellow Haldi ceremony decorations.' },
-      { title: 'Mehendi', image: flowerDecorImg, description: 'Colourful and traditional Mehendi floral setups.' },
-      { title: 'Half Saree Ceremony', image: gallery2Img, description: 'Graceful traditional half saree ceremony decor.' },
-      { title: 'Naming Ceremony', image: aboutImg, description: 'Soft, joyful naming ceremony flower arrangements.' },
-      { title: 'House Warming', image: flowerDecorImg, description: 'Auspicious and beautiful house warming decoration.' },
-      { title: 'Temple Inauguration', image: gallery2Img, description: 'Traditional and elegant temple inauguration decor.' },
-    ],
     detailDescription: 'Our expert floral designers craft breathtaking arrangements for every occasion. From grand wedding stages to intimate naming ceremonies, we bring nature\'s beauty to your celebration.',
   },
   {
@@ -80,16 +70,6 @@ const servicesData = [
         <path d="M27 20c2-1 3-3 3-5" />
       </svg>
     ),
-    categories: [
-      { title: 'Entrance Flower Wall', image: flowerDecorImg, description: 'Grand floral entrance walls for dramatic first impressions.' },
-      { title: 'Stage Floral Display', image: gallery2Img, description: 'Luxurious floral backdrops and stage arrangements.' },
-      { title: 'Table Centrepieces', image: aboutImg, description: 'Elegant floral centrepieces for dining tables.' },
-      { title: 'Hanging Floral Art', image: flowerDecorImg, description: 'Suspended floral installations and chandeliers.' },
-      { title: 'Pathway Decoration', image: gallery2Img, description: 'Romantic flower-lined pathways and aisle decor.' },
-      { title: 'Ceiling Canopy', image: aboutImg, description: 'Stunning floral ceiling canopies and drapes.' },
-      { title: 'Car Decoration', image: flowerDecorImg, description: 'Beautiful floral car decorations for the couple.' },
-      { title: 'Photobooth Backdrop', image: gallery2Img, description: 'Instagram-worthy floral photobooth backdrops.' },
-    ],
     detailDescription: 'Our Flower Show service brings the beauty of nature to life with spectacular floral installations and live displays. From dramatic entrance walls to delicate table centrepieces, every arrangement is crafted to captivate and inspire.',
   },
   {
@@ -365,7 +345,7 @@ function ServiceDetailModal({ service, onClose }) {
                   : isPhotography ? 'Packages & Pricing'
                   : 'What We Offer'}
               </div>
-              <div className="svc-category-grid">
+              <div className={`svc-category-grid${isPhotography ? ' photo-grid' : ''}`}>
                 {service.categories.map((cat, i) => (
                   <button
                     key={cat.title}
