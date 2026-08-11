@@ -622,6 +622,37 @@ function App() {
   const [portfolioOffset, setPortfolioOffset] = useState(0)
   const [activeIndex, setActiveIndex] = useState(0)
 
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    eventType: '',
+    eventDate: '',
+    message: ''
+  })
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault()
+    const whatsappMessage = `*New Event Enquiry - Uptown Events*%0A%0A` +
+      `*Name:* ${encodeURIComponent(formData.name || 'N/A')}%0A` +
+      `*Phone:* ${encodeURIComponent(formData.phone || 'N/A')}%0A` +
+      `*Email:* ${encodeURIComponent(formData.email || 'N/A')}%0A` +
+      `*Event Type:* ${encodeURIComponent(formData.eventType || 'N/A')}%0A` +
+      `*Event Date:* ${encodeURIComponent(formData.eventDate || 'N/A')}%0A` +
+      `*Message:* ${encodeURIComponent(formData.message || 'N/A')}`
+
+    const whatsappUrl = `https://wa.me/918088854400?text=${whatsappMessage}`
+    window.open(whatsappUrl, '_blank')
+  }
+
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + portfolioItems.length) % portfolioItems.length)
   }
@@ -1064,37 +1095,37 @@ function App() {
             </RevealSection>
 
             <RevealSection>
-              <form className="contact-form">
+              <form className="contact-form" onSubmit={handleContactSubmit}>
                 <div className="field-row reveal-up delay-100">
                   <label>
                     Name
-                    <input type="text" name="name" placeholder="Your name" />
+                    <input type="text" name="name" placeholder="Your name" value={formData.name} onChange={handleInputChange} required />
                   </label>
                   <label>
                     Phone Number
-                    <input type="tel" name="phone" placeholder="Your phone" />
+                    <input type="tel" name="phone" placeholder="Your phone" value={formData.phone} onChange={handleInputChange} required />
                   </label>
                 </div>
 
                 <div className="field-row reveal-up delay-200">
                   <label>
                     Email
-                    <input type="email" name="email" placeholder="Your email" />
+                    <input type="email" name="email" placeholder="Your email" value={formData.email} onChange={handleInputChange} />
                   </label>
                   <label>
                     Event Type
-                    <input type="text" name="eventType" placeholder="Wedding, birthday..." />
+                    <input type="text" name="eventType" placeholder="Wedding, birthday..." value={formData.eventType} onChange={handleInputChange} />
                   </label>
                 </div>
 
                 <label className="reveal-up delay-300">
                   Event Date
-                  <input type="date" name="eventDate" />
+                  <input type="date" name="eventDate" value={formData.eventDate} onChange={handleInputChange} />
                 </label>
 
                 <label className="reveal-up delay-400">
                   Message
-                  <textarea name="message" rows="5" placeholder="Tell us about your dream celebration..."></textarea>
+                  <textarea name="message" rows="5" placeholder="Tell us about your dream celebration..." value={formData.message} onChange={handleInputChange}></textarea>
                 </label>
 
                 <button type="submit" className="primary-button form-button reveal-up delay-500">
