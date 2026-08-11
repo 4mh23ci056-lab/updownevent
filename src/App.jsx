@@ -799,24 +799,27 @@ function App() {
                 
                 <h1 className="hero-heading-editorial text-mask-wrapper">
                   <span className="text-mask-content reveal-up delay-200">
-                    WE PLAN.
+                    Memorable
                   </span>
-                  <span className="gold-text gold-shimmer text-mask-content reveal-up delay-350">
-                    YOU CELEBRATE.
+                  <span className="gold-text gold-shimmer text-mask-content reveal-up delay-300">
+                    Events,
+                  </span>
+                  <span className="text-mask-content reveal-up delay-400">
+                    Flawlessly Done
                   </span>
                 </h1>
                 
                 <p className="hero-description-editorial reveal-up delay-450">
-                  Creating unforgettable celebrations with extraordinary decor, entertainment and experiences.
+                  From intimate gatherings to grand celebrations, we bring your vision to life with creativity, precision and passion.
                 </p>
                 
                 <div className="hero-actions-editorial reveal-up delay-550">
                   <a href="#services" className="primary-button">
-                    EXPLORE OUR SERVICES
+                    Our Services
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
                   </a>
                   <a href="#contact" className="secondary-button">
-                    PLAN YOUR EVENT
+                    Contact Us
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
                   </a>
                 </div>
