@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { AnimatedLabel, AnimatedHeading } from './App'
 import './Services.css'
 import flowerDecorImg from './assets/flower_decor.jpeg'
+import flowerShowHouseImg from './assets/flower_show_house.jpg'
 import eventDecorImg from './assets/event_decor.jpeg'
 import balloonDecorImg from './assets/balloon_decor.jpeg'
 import foodSnacksImg from './assets/food_snacks.png'
@@ -9,6 +10,66 @@ import funActivitiesImg from './assets/fun_activities.png'
 import entertainmentImg from './assets/entertainment.png'
 import aboutImg from './assets/about.jpeg'
 import gallery2Img from './assets/gallery_2.jpeg'
+
+// Dynamically import all 24 flower show images and sort them numerically
+const flowerShowImagesMap = import.meta.glob('./assets/flower_show/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const flowerShowImages = Object.keys(flowerShowImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => flowerShowImagesMap[key])
+
+// Dynamically import all 10 wedding flower decor images and sort them numerically
+const weddingImagesMap = import.meta.glob('./assets/flower_decor_weddings/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const weddingImages = Object.keys(weddingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => weddingImagesMap[key])
+
+// Dynamically import all 14 reception flower decor images and sort them numerically
+const receptionImagesMap = import.meta.glob('./assets/flower_decor_receptions/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const receptionImages = Object.keys(receptionImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => receptionImagesMap[key])
+
+// Dynamically import all 10 naming ceremony flower decor images and sort them numerically
+const namingImagesMap = import.meta.glob('./assets/flower_decor_naming_ceremonies/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const namingImages = Object.keys(namingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => namingImagesMap[key])
+
+// Dynamically import all 17 temple inauguration flower decor images and sort them numerically
+const templeImagesMap = import.meta.glob('./assets/flower_decor_temples/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const templeImages = Object.keys(templeImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => templeImagesMap[key])
+
+// Dynamically import all 4 house warming flower decor images and sort them numerically
+const houseWarmingImagesMap = import.meta.glob('./assets/flower_decor_house_warmings/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const houseWarmingImages = Object.keys(houseWarmingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => houseWarmingImagesMap[key])
 
 /* ═══════════════════════════════════════════
    SERVICE DATA
@@ -19,14 +80,24 @@ const servicesData = [
     id: 'flower-decor',
     title: 'Flower Decor',
     description: 'Elegant floral arrangements meticulously designed around your celebration — from intimate ceremonies to grand receptions.',
-    image: flowerDecorImg,
-    galleryImages: [flowerDecorImg, aboutImg, gallery2Img, flowerDecorImg, aboutImg, gallery2Img],
+    image: weddingImages[0] || flowerDecorImg,
+    galleryImages: [...weddingImages, ...receptionImages, ...namingImages, ...templeImages, ...houseWarmingImages],
     icon: (
       <svg width="32" height="32" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 28c0-5.5-4.5-10-10-10 5.5 0 10-4.5 10-10 0 5.5 4.5 10 10 10-5.5 0-10 4.5-10 10z" />
         <circle cx="18" cy="18" r="3" />
       </svg>
     ),
+    categories: [
+      { title: 'Weddings', image: weddingImages[0] || flowerDecorImg, description: 'Grand wedding stage decorations, mandaps, traditional entry gates, and customized wedding hall setups.', galleryImages: weddingImages },
+      { title: 'Reception', image: receptionImages[0] || aboutImg, description: 'Elegant floral styling, stage backdrops, premium photobooth setups, and tablescapes for reception parties.', galleryImages: receptionImages },
+      { title: 'Haldhi', image: gallery2Img, description: 'Vibrant yellow and orange floral decorations, photogenic swings, and traditional Haldi backdrops.' },
+      { title: 'Mehandi', image: flowerDecorImg, description: 'Colorful floral decor, cozy seating setups, and creative floral canopies for Mehendi functions.' },
+      { title: 'Half Saree Ceremony', image: aboutImg, description: 'Charming floral backdrops, stage designs, and traditional half saree ceremony decorations.' },
+      { title: 'Naming Ceremony', image: namingImages[0] || gallery2Img, description: 'Beautiful floral cradles, welcome boards, and delicate floral stage setups for naming ceremonies.', galleryImages: namingImages },
+      { title: 'House Warming', image: houseWarmingImages[0] || flowerDecorImg, description: 'Traditional door hangings (Torans) with mango leaves and marigolds, and elegant home decor setups.', galleryImages: houseWarmingImages },
+      { title: 'Temple Inauguration', image: templeImages[0] || aboutImg, description: 'Divine and elaborate temple floral arrangements, altar decorations, and spiritual venue setups.', galleryImages: templeImages },
+    ],
     detailDescription: 'Our expert floral designers craft breathtaking arrangements for every occasion. From grand wedding stages to intimate naming ceremonies, we bring nature\'s beauty to your celebration.',
   },
   {
@@ -58,8 +129,8 @@ const servicesData = [
     id: 'flower-show',
     title: 'Flower Show',
     description: 'Stunning live flower show displays and curated floral exhibitions that add a magical touch to any event or venue.',
-    image: flowerDecorImg,
-    galleryImages: [flowerDecorImg, gallery2Img, aboutImg, flowerDecorImg, gallery2Img, aboutImg],
+    image: flowerShowHouseImg,
+    galleryImages: [flowerShowHouseImg, ...flowerShowImages],
     icon: (
       <svg width="32" height="32" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="18" cy="13" r="5" />
@@ -274,14 +345,42 @@ function ServiceCard({ service, onOpen, index }) {
    ═══════════════════════════════════════════ */
 function ServiceDetailModal({ service, onClose }) {
   const [activeCategory, setActiveCategory] = useState(null)
+  const [lightboxPhotos, setLightboxPhotos] = useState(null)
+  const [lightboxIndex, setLightboxIndex] = useState(null)
   const overlayRef = useRef(null)
+
+  const activeCatObj = service.categories?.find(c => c.title === activeCategory)
+  const displayImages = (activeCatObj && activeCatObj.galleryImages && activeCatObj.galleryImages.length > 0)
+    ? activeCatObj.galleryImages
+    : service.galleryImages
+
+  const showNextImage = (e) => {
+    e.stopPropagation()
+    if (lightboxIndex === null || lightboxPhotos === null) return
+    setLightboxIndex((prev) => (prev + 1) % lightboxPhotos.length)
+  }
+
+  const showPreviousImage = (e) => {
+    e.stopPropagation()
+    if (lightboxIndex === null || lightboxPhotos === null) return
+    setLightboxIndex((prev) => (prev - 1 + lightboxPhotos.length) % lightboxPhotos.length)
+  }
 
   /* ESC key to close */
   useEffect(() => {
-    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    const handler = (e) => {
+      if (e.key === 'Escape') {
+        if (lightboxIndex !== null) {
+          setLightboxIndex(null)
+          setLightboxPhotos(null)
+        } else {
+          onClose()
+        }
+      }
+    }
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
-  }, [onClose])
+  }, [onClose, lightboxIndex])
 
   /* Prevent background scroll */
   useEffect(() => {
@@ -324,11 +423,6 @@ function ServiceDetailModal({ service, onClose }) {
           </button>
         </div>
 
-        {/* Hero image */}
-        <div className="svc-modal-hero">
-          <img src={service.image} alt={service.title} />
-          <div className="svc-modal-hero-overlay" />
-        </div>
 
         {/* Body */}
         <div className="svc-modal-body revealed">
@@ -378,10 +472,20 @@ function ServiceDetailModal({ service, onClose }) {
 
           {/* Photo Gallery */}
           <div className="svc-modal-section">
-            <div className="svc-section-label reveal-up delay-250">Photo Gallery</div>
+            <div className="svc-section-label reveal-up delay-250">
+              {activeCategory ? `${activeCategory} Photos` : 'Photo Gallery'}
+            </div>
             <div className="svc-modal-gallery">
-              {service.galleryImages.map((src, i) => (
-                <div key={i} className={`svc-gallery-item reveal-up delay-${Math.min((i + 3) * 80, 600)}`}>
+              {displayImages.map((src, i) => (
+                <div
+                  key={i}
+                  className={`svc-gallery-item reveal-up delay-${Math.min((i + 3) * 80, 600)}`}
+                  onClick={() => {
+                    setLightboxPhotos(displayImages);
+                    setLightboxIndex(i);
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
                   <img src={src} alt={`${service.title} gallery ${i + 1}`} loading={i > 2 ? 'lazy' : 'eager'} />
                 </div>
               ))}
@@ -390,6 +494,48 @@ function ServiceDetailModal({ service, onClose }) {
 
         </div>
       </div>
+
+      {lightboxIndex !== null && lightboxPhotos !== null && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Service gallery image viewer"
+          onClick={() => { setLightboxIndex(null); setLightboxPhotos(null); }}
+          style={{ zIndex: 1100 }}
+        >
+          <button
+            type="button"
+            className="lightbox-close"
+            onClick={(e) => { e.stopPropagation(); setLightboxIndex(null); setLightboxPhotos(null); }}
+            aria-label="Close gallery"
+          >
+            ×
+          </button>
+          <button
+            type="button"
+            className="lightbox-nav prev"
+            onClick={showPreviousImage}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <img
+            src={lightboxPhotos[lightboxIndex]}
+            alt={`${service.title} gallery enlarged`}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            type="button"
+            className="lightbox-nav next"
+            onClick={showNextImage}
+            aria-label="Next image"
+          >
+            ›
+          </button>
+        </div>
+      )}
+
     </div>
   )
 }

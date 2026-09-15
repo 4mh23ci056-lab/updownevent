@@ -4,6 +4,7 @@ import ServicesSection from './ServicesSection'
 import logoImg from './assets/logo.png'
 import aboutImg from './assets/about.jpeg'
 import flowerDecorImg from './assets/flower_decor.jpeg'
+import flowerShowHouseImg from './assets/flower_show_house.jpg'
 import eventDecorImg from './assets/event_decor.jpeg'
 import balloonDecorImg from './assets/balloon_decor.jpeg'
 import foodSnacksImg from './assets/food_snacks.png'
@@ -12,11 +13,57 @@ import entertainmentImg from './assets/entertainment.png'
 import gallery2Img from './assets/gallery_2.jpeg'
 import heroStageImg from './assets/hero_stage.jpg'
 
+// Dynamically import wedding and reception images for the main gallery
+const weddingImagesMap = import.meta.glob('./assets/flower_decor_weddings/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const weddingImages = Object.keys(weddingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => weddingImagesMap[key])
+
+const receptionImagesMap = import.meta.glob('./assets/flower_decor_receptions/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const receptionImages = Object.keys(receptionImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => receptionImagesMap[key])
+
+const namingImagesMap = import.meta.glob('./assets/flower_decor_naming_ceremonies/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const namingImages = Object.keys(namingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => namingImagesMap[key])
+
+const templeImagesMap = import.meta.glob('./assets/flower_decor_temples/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const templeImages = Object.keys(templeImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => templeImagesMap[key])
+
+const houseWarmingImagesMap = import.meta.glob('./assets/flower_decor_house_warmings/*.{png,jpg,jpeg,PNG,JPG,JPEG}', { eager: true, import: 'default' })
+const houseWarmingImages = Object.keys(houseWarmingImagesMap)
+  .sort((a, b) => {
+    const numA = parseInt(a.match(/\d+/)?.[0] || '0', 10)
+    const numB = parseInt(b.match(/\d+/)?.[0] || '0', 10)
+    return numA - numB
+  })
+  .map(key => houseWarmingImagesMap[key])
+
 const services = [
   {
     title: 'Flower Decor',
     description: 'Elegant floral arrangements designed around your celebration.',
-    image: flowerDecorImg,
+    image: weddingImages[0] || flowerDecorImg,
     icon: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M18 28c0-5.5-4.5-10-10-10 5.5 0 10-4.5 10-10 0 5.5 4.5 10 10 10-5.5 0-10 4.5-10 10z" />
@@ -170,10 +217,13 @@ const galleryItems = [
   { category: 'Food & Snacks', src: foodSnacksImg },
   { category: 'Fun Activities', src: funActivitiesImg },
   { category: 'Entertainment', src: entertainmentImg },
-  { category: 'Flower Decor', src: aboutImg },
-  { category: 'Flower Decor', src: gallery2Img },
   { category: 'Event Decor', src: eventDecorImg },
-  { category: 'Flower Decor', src: flowerDecorImg },
+  { category: 'Flower Decor', src: flowerShowHouseImg },
+  ...weddingImages.slice(0, 3).map(src => ({ category: 'Flower Decor', src })),
+  ...receptionImages.slice(0, 3).map(src => ({ category: 'Flower Decor', src })),
+  ...namingImages.slice(0, 3).map(src => ({ category: 'Flower Decor', src })),
+  ...templeImages.slice(0, 3).map(src => ({ category: 'Flower Decor', src })),
+  ...houseWarmingImages.slice(0, 3).map(src => ({ category: 'Flower Decor', src })),
 ]
 
 const testimonials = [
